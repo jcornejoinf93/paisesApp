@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Country } from '../interfaces/paises.interfaces';
@@ -22,5 +22,12 @@ export class PaisService {
 
   getPaisPorCodigo(codigo: string) {
     return this.http.get<Country>(`${this.api_url}/alpha/${codigo}`);
+  }
+
+  getPaisPorRegion(region: string){
+
+    const params = new HttpParams().set('fields', 'capital;alpha2Code;flag;population');
+
+    return this.http.get<Country[]>(`${this.api_url}/region/${region}`, {params});
   }
 }

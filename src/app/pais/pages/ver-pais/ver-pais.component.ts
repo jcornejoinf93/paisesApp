@@ -31,7 +31,7 @@ export class VerPaisComponent implements OnInit {
             const {id} = param;
             return this.paisService.getPaisPorCodigo(id);
           }),
-          tap(console.log)
+          // tap(console.log)
         )
         .subscribe( pais => this.pais = pais);
   }
